@@ -1,60 +1,132 @@
-<p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    </a>
-    <h1 align="center">Yii 2 Advanced Project Template</h1>
-    <br>
-</p>
+# Network Management System (NMS) Application
 
-Yii 2 Advanced Project Template is a skeleton [Yii 2](https://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.
+A simplified web application built using the Yii 2 Advanced Framework for managing network devices. The application provides basic CRUD operations for devices, user authentication, and real-time status monitoring.
 
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
+---
 
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
+## Features
 
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
+### Device Management
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![build](https://github.com/yiisoft/yii2-app-advanced/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-app-advanced/actions?query=workflow%3Abuild)
+- **Add Device**: Create a new network device with fields such as:
+  - Device Name
+  - IP Address
+  - Device Type (Router, Switch, Firewall)
+  - Status (Online/Offline)
+- **View Devices**: Display a list of all devices in a tabular format.
+- **Edit Device**: Update device information.
+- **Delete Device**: Remove a device from the database.
 
-DIRECTORY STRUCTURE
--------------------
+### User Authentication
 
-```
-common
-    config/              contains shared configurations
-    mail/                contains view files for e-mails
-    models/              contains model classes used in both backend and frontend
-    tests/               contains tests for common classes    
-console
-    config/              contains console configurations
-    controllers/         contains console controllers (commands)
-    migrations/          contains database migrations
-    models/              contains console-specific model classes
-    runtime/             contains files generated during runtime
-backend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains backend configurations
-    controllers/         contains Web controller classes
-    models/              contains backend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for backend application    
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-frontend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains frontend configurations
-    controllers/         contains Web controller classes
-    models/              contains frontend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for frontend application
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-    widgets/             contains frontend widgets
-vendor/                  contains dependent 3rd-party packages
-environments/            contains environment-based overrides
-```
+- Secure login system.
+- Restrict access to the device management features for authenticated users only.
+
+### Status Monitoring
+
+- Real-time simulation of device status (Online/Offline).
+- Highlights offline devices.
+
+### Responsive Design
+
+- Fully responsive layout using Bootstrap.
+- Works on desktops, tablets, and mobile devices.
+
+---
+
+## Technologies Used
+
+- **Framework**: Yii 2 Advanced
+- **Languages**: PHP, HTML5, CSS3, JavaScript
+- **Frontend**: Bootstrap
+- **Database**: MySQL
+- **Version Control**: Git
+
+---
+
+## Installation Guide
+
+### Prerequisites
+
+- PHP 7.4 or higher
+- Composer
+- MySQL or SQLite database
+- A web server (e.g., Apache, Nginx)
+
+### Steps
+
+1. **Clone the Repository**:
+
+   ```bash
+   git clone <repository_url>
+   cd nms
+   ```
+
+2. **Install Dependencies**:
+
+   ```bash
+   composer install
+   ```
+
+3. **Initialize Yii Application**:
+
+   ```bash
+   php init
+   ```
+
+   - Select `Development` mode.
+
+4. **Configure the Database**:
+   Update `common/config/main-local.php` with your database credentials:
+
+   ```php
+   'db' => [
+       'class' => 'yii\db\Connection',
+       'dsn' => 'mysql:host=localhost;dbname=nms',
+       'username' => 'root',
+       'password' => '',
+       'charset' => 'utf8',
+   ],
+   ```
+
+5. **Run Migrations**:
+   Create the required tables:
+
+   ```bash
+   php yii migrate
+   ```
+
+6. **Start the Application**:
+   ```bash
+   php yii serve --docroot=backend/web
+   ```
+   Open the application in your browser at `http://localhost:8080`.
+
+---
+
+## Live Demo
+
+- **URL**: [Live Application Link](#)
+
+---
+
+## Folder Structure
+
+- **Frontend**: Handles public-facing pages (if applicable).
+- **Backend**: Handles administrative features like device management.
+- **Common**: Shared files, including models and configurations.
+
+---
+
+## Additional Notes
+
+- To log in, use the default user credentials:
+  - Username: `admin`
+  - Password: `admin` (make sure to update this in production).
+- Customize roles and permissions by extending Yii's Role-Based Access Control (RBAC).
+
+---
+
+## License
+
+This project is open-source and available under the [MIT License](LICENSE).
