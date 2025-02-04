@@ -74,7 +74,15 @@ class User extends ActiveRecord implements IdentityInterface
     {
         throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
     }
-
+    
+    public function beforeSave($insert)
+    {
+        if ($insert) {
+            $this->status = self::STATUS_ACTIVE; // Make users active by default
+        }
+        return parent::beforeSave($insert);
+    }
+    
     /**
      * Finds user by username
      *
